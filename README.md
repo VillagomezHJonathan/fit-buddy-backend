@@ -12,3 +12,12 @@
 
 #### An application used to set up your workout routine for the week!
 
+---
+
+### **_Project Set-Up_**
+
+#### Checkout this projects Trello Board!: [Trello](https://trello.com/b/SOxut66K/fit-buddy)
+
+![Image](/project-info/chd.svg)
+
+![Image](/project-info/erd.svg)
