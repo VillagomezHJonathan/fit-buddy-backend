@@ -12,8 +12,8 @@ class Exercise(db.Model):
   sets = db.Column(db.Integer)
   reps = db.Column(db.Integer)
   duration = db.Column(db.Integer)
-  created_at = db.Column(db.DateTime, default=datetime.now, nullable=False)
-  updated_at = db.Column(db.DateTime, default=datetime.now, nullable=False, onupdate=datetime.now())
+  created_at = db.Column(db.DateTime, default = datetime.now, nullable = False)
+  updated_at = db.Column(db.DateTime, default = datetime.now, nullable = False, onupdate = datetime.now())
 
   def __init__(self, name, type, muscle, equipment, instructions, sets, reps, duration):
     self.name = name
@@ -51,7 +51,7 @@ class Exercise(db.Model):
 
     @classmethod
     def find_by_id(cls, id):
-      return db.get_or_404(cls, id, description=f"Exercise with id of {id} is not available")
+      return db.get_or_404(cls, id, description=f'Exercise with id of {id} is not available')
 
 
 

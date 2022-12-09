@@ -4,6 +4,7 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from models.db import db
 from models.exercise import Exercise
+from models.user import User
 
 app = Flask(__name__)
 CORS(app)
