@@ -3,6 +3,7 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from models.db import db
 from models.exercise import Exercise
+from models.muscle import Muscle
 
 app = Flask(__name__)
 CORS(app)
@@ -16,3 +17,28 @@ migrate = Migrate(app, db)
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+muscles = [
+('trapezius'),
+'deltoid',
+'pectoralis major',
+'triceps',
+'biceps',
+'abdominal',
+'serratus anterior',
+'latissimus dorsi',
+'external oblique',
+'brachioradialis',
+'finger extensors',
+'finger flexors',
+'quadriceps',
+'hamstrings',
+'sartorius',
+'abductors',
+'gastrocnemius',
+'tibialis anterior',
+'soleus',
+'gluteus medius',
+'gluteus maximus'
+]
