@@ -5,6 +5,7 @@ from flask_migrate import Migrate
 from models.db import db
 from models.exercise import Exercise
 from models.user import User
+from models.day import Day
 
 app = Flask(__name__)
 CORS(app)
