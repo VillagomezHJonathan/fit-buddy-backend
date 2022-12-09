@@ -10,3 +10,23 @@ class Muscle(db.Model):
 
   def __init__(self, name):
     self.name = name
+
+  def json(self):
+      return {
+        "id": self.id,
+        "name": self.name,
+        "created_at": str(self.created_at),
+        "updated_at": str(self.updated_at)}
+
+  def create(self):
+      db.session.add(self)
+      db.session.commit()
+      return self
+
+  @classmethod
+  def find_all(cls):
+      return cls.query.all()
+
+  @classmethod
+  def find_by_id(cls, id):
+      return db.get_or_404(cls, id, description=f'Record with id:{id} is not available')
