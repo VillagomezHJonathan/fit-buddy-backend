@@ -2,6 +2,7 @@ from datetime import datetime
 from models.db import db
 
 class Day(db.Model):
+  __tablename__ = 'days'
   id = db.Column(db.Integer, primary_key = True)
   name = db.Column(db.String(50), nullable = False)
   created_at = db.Column(db.DateTime, default = datetime.now, nullable = False)
