@@ -8,9 +8,11 @@ from models.user import User
 from models.day import Day
 from models.routine import Routine
 from models.day_exercise import DayExercise
+from resources.UsersRes import UsersRes
 
 app = Flask(__name__)
 CORS(app)
+api = Api(app)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://localhost:5432/fitbuddy_db"
@@ -19,7 +21,8 @@ app.config['SQLALCHEMY_ECHO'] = True
 db.init_app(app)
 migrate = Migrate(app, db)
 
-api = Api(app)
+api.add_resource(UsersRes, '/users')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -7,7 +7,8 @@ class Day(db.Model):
   name = db.Column(db.String(50), nullable = False)
   created_at = db.Column(db.DateTime, default = datetime.now, nullable = False)
   updated_at = db.Column(db.DateTime, default = datetime.now, nullable = False, onupdate = datetime.now())
-  day_exercises = db.relationship('DayExercise', back_populates='days')
+  exercises = db.relationship('Exercise', secondary='days_exercises', back_populates='days')
+
 
   def __init__(self, name):
     self.name = name
