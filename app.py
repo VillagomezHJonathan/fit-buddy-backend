@@ -7,6 +7,7 @@ from models.exercise import Exercise
 from models.user import User
 from models.day import Day
 from models.routine import Routine
+from models.day_exercise import DayExercise
 
 app = Flask(__name__)
 CORS(app)

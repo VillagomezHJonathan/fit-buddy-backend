@@ -14,6 +14,7 @@ class Exercise(db.Model):
   duration = db.Column(db.Integer)
   created_at = db.Column(db.DateTime, default = datetime.now, nullable = False)
   updated_at = db.Column(db.DateTime, default = datetime.now, nullable = False, onupdate = datetime.now())
+  day_exercises = db.relationship('DayExercise', back_populates='exercises')
 
   def __init__(self, name, type, muscle, equipment, instructions, sets, reps, duration):
     self.name = name

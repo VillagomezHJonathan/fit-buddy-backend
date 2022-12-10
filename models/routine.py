@@ -9,6 +9,7 @@ class Routine(db.Model):
   created_at = db.Column(db.DateTime, default = datetime.now, nullable = False)
   updated_at = db.Column(db.DateTime, default = datetime.now, nullable = False, onupdate = datetime.now())
   user = db.relationship('User', back_populates = 'routines')
+  day_exercises = db.relationship('DayExercise', cascade='all', back_populates='routines')
 
   def __init__(self, name):
     self.name = name
