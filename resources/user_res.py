@@ -3,6 +3,7 @@ from flask_restful import Resource
 from sqlalchemy.orm import joinedload
 from models.db import db
 from models.user import User
+from models.routine import Routine
 
 class Users(Resource):
   def get(self):

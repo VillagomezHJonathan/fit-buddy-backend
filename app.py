@@ -13,6 +13,7 @@ from resources.user_res import SingleUser
 from resources.day_res import Days
 from resources.routine_res import Routines
 from resources.exercise_res import Exercises
+from resources.day_exercise_res import DayExercises
 
 app = Flask(__name__)
 CORS(app)
@@ -34,5 +35,7 @@ api.add_resource(Routines, '/api/routines')
 
 api.add_resource(Exercises, '/api/exercises')
 
+api.add_resource(DayExercises, '/api/days-exercises')
+# 3 day 1 exercise 1 routine
 if __name__ == '__main__':
     app.run(debug=True)
