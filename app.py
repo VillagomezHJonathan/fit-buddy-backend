@@ -10,6 +10,7 @@ from models.routine import Routine
 from models.day_exercise import DayExercise
 from resources.UsersRes import UsersRes
 from resources.DaysRes import DaysRes
+from resources.RoutinesRes import RoutinesRes
 
 app = Flask(__name__)
 CORS(app)
@@ -22,8 +23,9 @@ app.config['SQLALCHEMY_ECHO'] = True
 db.init_app(app)
 migrate = Migrate(app, db)
 
-api.add_resource(UsersRes, '/users')
-api.add_resource(DaysRes, '/days')
+api.add_resource(UsersRes, '/api/users')
+api.add_resource(DaysRes, '/api/days')
+api.add_resource(RoutinesRes, '/api/routines')
 
 if __name__ == '__main__':
     app.run(debug=True)

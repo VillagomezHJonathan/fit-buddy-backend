@@ -10,8 +10,6 @@ class DayExercise(db.Model):
   created_at = db.Column(db.DateTime, default=datetime.now, nullable=False)
   updated_at = db.Column(db.DateTime, default=datetime.now, nullable=False, onupdate=datetime.now())
   routines = db.relationship('Routine', back_populates='days_exercises')
-  # exercise = db.relationship('Exercise', back_populates='exercise')
-  # day = db.relationship('Day', back_populates='day')
 
   def __init__(self, routine_id, exercise_id, day_id):
     self.routine_id = routine_id
@@ -35,7 +33,7 @@ class DayExercise(db.Model):
 
   @classmethod
   def find_all(cls):
-    return DayExercise.query.find()
+    return DayExercise.query.all()
 
   @classmethod
   def find_by_id(cls, id):
