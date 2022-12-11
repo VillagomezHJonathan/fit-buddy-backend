@@ -4,6 +4,7 @@ from sqlalchemy.orm import joinedload
 from models.db import db
 from models.user import User
 from models.routine import Routine
+from models.day_exercise import DayExercise
 
 class Users(Resource):
   def get(self):
@@ -18,6 +19,23 @@ class Users(Resource):
 
 class SingleUser(Resource):
   def get(self, id):
-    user = User.query.options(joinedload('routines')).filter_by(id=id).first()
-    routines = [r.json() for r in user.routines]
+    user = User.query.filter_by(id=id).first()
+
+    routines_raw = Routine.query.filter_by(user_id=id).all()
+
+    routines = []
+    for r in routines_raw:
+      de_raw = DayExercise.query.filter_by(routine_id=r.id).all()
+      de = [d.json() for d in de_raw]
+
+      dict = {
+        **r.json(),
+        "exercises": de
+      }
+
+      routines.append(dict)
+
+      
+    
+
     return {**user.json(), "routines": routines} 
