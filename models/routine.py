@@ -11,8 +11,9 @@ class Routine(db.Model):
   users = db.relationship('User', back_populates = 'routines')
   days_exercises = db.relationship('DayExercise', cascade='all', back_populates='routines')
 
-  def __init__(self, name):
+  def __init__(self, name, user_id):
     self.name = name
+    self.user_id = user_id
 
   def json(self):
     return {

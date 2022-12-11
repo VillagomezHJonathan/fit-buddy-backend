@@ -3,7 +3,7 @@ from flask_restful import Resource
 from models.db import db
 from models.routine import Routine
 
-class RoutinesRes(Resource):
+class Routines(Resource):
   def get(self):
     data = Routine.find_all()
     return [r.json() for r in data]

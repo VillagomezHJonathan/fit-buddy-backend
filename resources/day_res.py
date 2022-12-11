@@ -3,7 +3,7 @@ from flask_restful import Resource
 from models.db import db
 from models.day import Day
 
-class DaysRes(Resource):
+class Days(Resource):
   def get(self):
     data = Day.find_all()
     return [d.json() for d in data]
