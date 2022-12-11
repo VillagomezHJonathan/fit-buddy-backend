@@ -8,10 +8,9 @@ from models.user import User
 from models.day import Day
 from models.routine import Routine
 from models.day_exercise import DayExercise
-from resources.user_res import Users
-from resources.user_res import SingleUser
+from resources.user_res import Users, SingleUser
 from resources.day_res import Days
-from resources.routine_res import Routines
+from resources.routine_res import Routines, SingleRoutine
 from resources.exercise_res import Exercises
 from resources.day_exercise_res import DayExercises
 
@@ -31,6 +30,7 @@ api.add_resource(Users, '/api/users')
 
 api.add_resource(Days, '/api/days')
 
+api.add_resource(SingleRoutine, '/api/routines/<int:id>')
 api.add_resource(Routines, '/api/routines')
 
 api.add_resource(Exercises, '/api/exercises')
