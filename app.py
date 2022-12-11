@@ -24,8 +24,8 @@ app.config['SQLALCHEMY_ECHO'] = True
 db.init_app(app)
 migrate = Migrate(app, db)
 
-api.add_resource(Users, '/api/users')
 api.add_resource(SingleUser, '/api/users/<int:id>')
+api.add_resource(Users, '/api/users')
 
 api.add_resource(Days, '/api/days')
 api.add_resource(Routines, '/api/routines')
