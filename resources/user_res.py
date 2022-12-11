@@ -5,6 +5,8 @@ from models.db import db
 from models.user import User
 from models.routine import Routine
 from models.day_exercise import DayExercise
+from models.day import Day
+from models.exercise import Exercise
 
 class Users(Resource):
   def get(self):
@@ -26,16 +28,24 @@ class SingleUser(Resource):
     routines = []
     for r in routines_raw:
       de_raw = DayExercise.query.filter_by(routine_id=r.id).all()
-      de = [d.json() for d in de_raw]
+      exercises = []
+      for de in de_raw:
+        day = Day.query.filter_by(id=de.day_id).first()
+        exercise = Exercise.query.filter_by(id=de.exercise_id).first()
+        dict = {
+          **de.json(),
+          "day": {**day.json()},
+          "exercise": {**exercise.json()}
+        }
+
+        exercises.append(dict)
+
 
       dict = {
         **r.json(),
-        "exercises": de
+        "exercises": exercises
       }
 
       routines.append(dict)
-
-      
-    
 
     return {**user.json(), "routines": routines} 
