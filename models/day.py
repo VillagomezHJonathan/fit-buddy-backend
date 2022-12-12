@@ -7,6 +7,8 @@ class Day(db.Model):
   name = db.Column(db.String(50), nullable = False)
   created_at = db.Column(db.DateTime, default = datetime.now, nullable = False)
   updated_at = db.Column(db.DateTime, default = datetime.now, nullable = False, onupdate = datetime.now())
+  exercises = db.relationship('Exercise', secondary='days_exercises', back_populates='days')
+
 
   def __init__(self, name):
     self.name = name
@@ -26,7 +28,7 @@ class Day(db.Model):
 
   @classmethod
   def find_all(cls):
-    return Day.query.find()
+    return Day.query.all()
 
   @classmethod
   def find_by_id(cls, id):

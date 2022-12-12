@@ -9,7 +9,7 @@ class User(db.Model):
   password = db.Column(db.String(100), nullable = False)
   created_at = db.Column(db.DateTime, default = datetime.now, nullable = False)
   updated_at = db.Column(db.DateTime, default = datetime.now, nullable = False, onupdate = datetime.now())
-  tasks = db.relationship('Task', cascade = 'all', back_populates = 'users')
+  routines = db.relationship('Routine', cascade = 'all', back_populates = 'users')
 
   def __init__(self, name, email, password):
     self.name = name
