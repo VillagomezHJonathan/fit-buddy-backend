@@ -33,13 +33,18 @@ class SingleUser(Resource):
         day = Day.query.filter_by(id=de.day_id).first()
         exercise = Exercise.query.filter_by(id=de.exercise_id).first()
         dict = {
-          **de.json(),
-          "day": {**day.json()},
-          "exercise": {**exercise.json()}
+          "day_name": day.name,
+          "exercise_name": exercise.name,
+					"type": exercise.type,
+					"muscle": exercise.muscle,
+					"equipment": exercise.equipment,
+					"instructions": exercise.instructions,
+					"sets": exercise.sets,
+					"reps": exercise.reps,
+					"duration": exercise.duration
         }
 
         exercises.append(dict)
-
 
       dict = {
         **r.json(),
