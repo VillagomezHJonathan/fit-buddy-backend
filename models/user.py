@@ -33,8 +33,19 @@ class User(db.Model):
 
   @classmethod
   def find_all(cls):
-    return User.query.all()
+    return cls.query.all()
 
   @classmethod
   def find_by_id(cls, id):
-    return db.get_or_404(cls, id, description = f'Exercise with id of {id} is not available')
+    user = db.get_or_404(cls, id, description = f'Exercise with id of {id} is not available')
+    return {
+      "id": user.id,
+      "name": user.name,
+      "email": user.email,
+      "created_at": str(user.created_at),
+      "updated_at": str(user.updated_at)
+    }
+
+  @classmethod
+  def find_by_email(cls, email):
+    return cls.query.filter_by(email=email).first()

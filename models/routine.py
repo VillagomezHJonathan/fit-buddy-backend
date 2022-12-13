@@ -30,7 +30,7 @@ class Routine(db.Model):
 
   @classmethod
   def find_all(cls):
-    return Routine.query.all()
+    return cls.query.all()
 
   @classmethod
   def find_by_id(cls, id):

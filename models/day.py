@@ -28,7 +28,7 @@ class Day(db.Model):
 
   @classmethod
   def find_all(cls):
-    return Day.query.all()
+    return cls.query.all()
 
   @classmethod
   def find_by_id(cls, id):

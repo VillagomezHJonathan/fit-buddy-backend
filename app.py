@@ -8,6 +8,7 @@ from models.user import User
 from models.day import Day
 from models.routine import Routine
 from models.day_exercise import DayExercise
+from resources.auth import Register
 from resources.user_res import Users, SingleUser
 from resources.day_res import Days
 from resources.routine_res import Routines, SingleRoutine
@@ -24,6 +25,8 @@ app.config['SQLALCHEMY_ECHO'] = True
 
 db.init_app(app)
 migrate = Migrate(app, db)
+
+api.add_resource(Register, '/auth/register')
 
 api.add_resource(SingleUser, '/api/users/<int:id>')
 api.add_resource(Users, '/api/users')

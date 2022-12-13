@@ -33,7 +33,7 @@ class DayExercise(db.Model):
 
   @classmethod
   def find_all(cls):
-    return DayExercise.query.all()
+    return cls.query.all()
 
   @classmethod
   def find_by_id(cls, id):
