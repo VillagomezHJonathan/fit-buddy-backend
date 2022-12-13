@@ -21,7 +21,6 @@ class User(db.Model):
       "id": self.id,
       "name": self.name,
       "email": self.email,
-      "password": self.password,
       "created_at": str(self.created_at),
       "updated_at": str(self.updated_at)
     }
@@ -37,14 +36,7 @@ class User(db.Model):
 
   @classmethod
   def find_by_id(cls, id):
-    user = db.get_or_404(cls, id, description = f'Exercise with id of {id} is not available')
-    return {
-      "id": user.id,
-      "name": user.name,
-      "email": user.email,
-      "created_at": str(user.created_at),
-      "updated_at": str(user.updated_at)
-    }
+    return db.get_or_404(cls, id, description = f'Exercise with id of {id} is not available')
 
   @classmethod
   def find_by_email(cls, email):

@@ -14,6 +14,7 @@ from resources.day_res import Days
 from resources.routine_res import Routines, SingleRoutine
 from resources.exercise_res import Exercises
 from resources.day_exercise_res import DayExercises
+from middleware import strip_token, read_token
 
 app = Flask(__name__)
 CORS(app)

@@ -28,10 +28,16 @@ class Login(Resource):
 
     user = User.find_by_email(data['email'])
     if not user:
-      return {'msg': 'Email or password don\'t match!'}, 400
+      return {'msg': 'Email or password are invalid!'}, 400
 
     check = compare_password(data['password'], user.password)
+
     if check:
-      return user.json()
+      payload = user.json()
+      token = create_token(payload)
+      return {
+        "user": payload,
+        "token": token
+      }
     else:
-      return {'msg': 'Email or password don\'t match!'}, 400
+      return {'msg': 'Email or password are invalid!'}, 400
