@@ -8,7 +8,7 @@ class Exercise(db.Model):
   type = db.Column(db.String(80), nullable = False)
   muscle = db.Column(db.String(80), nullable = False)
   equipment = db.Column(db.String(80), nullable = False)
-  instructions = db.Column(db.String(255), nullable = False)
+  instructions = db.Column(db.String(1000), nullable = False)
   sets = db.Column(db.Integer)
   reps = db.Column(db.Integer)
   duration = db.Column(db.Integer)

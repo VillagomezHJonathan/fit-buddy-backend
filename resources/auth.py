@@ -41,3 +41,10 @@ class Login(Resource):
       }
     else:
       return {'msg': 'Email or password are invalid!'}, 400
+
+class CheckSession(Resource):
+  def get(self):
+    req = request
+    token = strip_token(req)
+    payload = read_token(token)
+    return payload

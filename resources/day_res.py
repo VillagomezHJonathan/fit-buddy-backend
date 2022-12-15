@@ -14,3 +14,8 @@ class Days(Resource):
     day.create()
     return day.json(), 201
 
+class DayName(Resource):
+  def get(self, name):
+    day = Day.query.filter_by(name=name).first()
+    return day.json(), 201
+
