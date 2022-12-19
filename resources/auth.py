@@ -33,7 +33,11 @@ class Login(Resource):
     check = compare_password(data['password'], user.password)
 
     if check:
-      payload = user.json()
+      payload = {
+        "id":  user.id,
+        "name": user.name,
+        "email": user.email
+      }
       token = create_token(payload)
       return {
         "user": payload,
